@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @RestController
-@EnableAutoConfiguration
+@RequestMapping("/booking")
 public class WebControler {
 
     @Autowired
@@ -27,11 +27,11 @@ public class WebControler {
 
     private static final Logger logger = LoggerFactory.getLogger(WebControler.class);
 
-    @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/station", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Station> getStations(){
         logger.info("getStations() request received");
         List<Station> stations = new ArrayList<>();
-        stations.add(stationService.getStationById(1L));
+        stations.add(stationService.getStationById(1));
         return stations;
     }
 }

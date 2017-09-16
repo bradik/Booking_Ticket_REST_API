@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Service
-@Transactional
 public class StationServiceImpl implements StationService {
     @Autowired
     private StationDao dao;
@@ -28,12 +27,12 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public Station getStationById(long id) {
+    public Station getStationById(Integer id) {
         return dao.getStationById(id);
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Integer id) {
         dao.delete(id);
     }
 

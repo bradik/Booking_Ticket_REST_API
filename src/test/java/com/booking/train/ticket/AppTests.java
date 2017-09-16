@@ -22,7 +22,7 @@ public class AppTests {
 
     @Test
     public void sipmleTest() throws Exception {
-        mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk());
+        mockMvc.perform(get("/booking/station")).andDo(print()).andExpect(status().isOk());
     }
 
 }
