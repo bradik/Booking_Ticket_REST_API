@@ -18,18 +18,20 @@ public class Route extends AbstractBaseEntity {
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
-    @Column(name = "TRAIN_ID")
+    @ManyToOne(fetch = FetchType.EAGER, optional=true)
     private Train train;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
-    @Column(name = "FROM_STATION_ID")
-    private Station from;
+    @ManyToOne(fetch = FetchType.EAGER, optional=true)
+    @JoinColumn(name="FROM_STATION_ID")
+    private Station fromStation;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
-    @Column(name = "TO_STATION_ID")
-    private Station to;
+    @ManyToOne(fetch = FetchType.EAGER, optional=true)
+    @JoinColumn(name="TO_STATION_ID")
+    private Station toStation;
 
     @Column(name = "departure_Date")
     @NotNull
@@ -41,6 +43,9 @@ public class Route extends AbstractBaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date arrivalDate;
 
+    public Route() {
+    }
+
     public Train getTrain() {
         return train;
     }
@@ -49,20 +54,20 @@ public class Route extends AbstractBaseEntity {
         this.train = train;
     }
 
-    public Station getFrom() {
-        return from;
+    public Station getFromStation() {
+        return fromStation;
     }
 
-    public void setFrom(Station from) {
-        this.from = from;
+    public void setFromStation(Station fromStation) {
+        this.fromStation = fromStation;
     }
 
-    public Station getTo() {
-        return to;
+    public Station getToStation() {
+        return toStation;
     }
 
-    public void setTo(Station to) {
-        this.to = to;
+    public void setToStation(Station toStation) {
+        this.toStation = toStation;
     }
 
     public Date getDepartureDate() {

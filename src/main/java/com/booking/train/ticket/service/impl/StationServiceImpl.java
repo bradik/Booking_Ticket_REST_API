@@ -1,11 +1,12 @@
 package com.booking.train.ticket.service.impl;
 
-import com.booking.train.ticket.dao.StationDao;
+import com.booking.train.ticket.repository.StationRepository;
 import com.booking.train.ticket.model.Station;
 import com.booking.train.ticket.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by Brad on 16.09.2017.
@@ -14,21 +15,26 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class StationServiceImpl implements StationService {
     @Autowired
-    private StationDao dao;
+    private StationRepository dao;
 
     @Override
-    public void create(Station station) {
-        dao.create(station);
+    public List<Station> findByNameLike(String name) {
+        return dao.findByNameContainingOrderByNameAsc(name);
     }
 
     @Override
-    public void update(Station station) {
-        dao.update(station);
+    public Station getByName(String name) {
+        return dao.getByName(name);
     }
 
     @Override
-    public Station getStationById(Integer id) {
-        return dao.getStationById(id);
+    public Station getById(Integer id) {
+        return dao.getById(id);
+    }
+
+    @Override
+    public void save(Station station) {
+        dao.save(station);
     }
 
     @Override

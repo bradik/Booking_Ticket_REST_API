@@ -2,9 +2,8 @@ package com.booking.train.ticket.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Brad on 16.09.2017.
@@ -12,10 +11,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "train")
-public class Train extends AbstractNamedEntity{
+public class Train extends AbstractNamedEntity {
+
     @NotBlank
     @Column(name = "train_number", nullable = false)
     private String trainNumber;
+
+    public Train() {
+    }
 
     public String getTrainNumber() {
         return trainNumber;
@@ -24,4 +27,6 @@ public class Train extends AbstractNamedEntity{
     public void setTrainNumber(String trainNumber) {
         this.trainNumber = trainNumber;
     }
+
+
 }

@@ -4,10 +4,11 @@ import org.hibernate.Hibernate;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
-public abstract class AbstractBaseEntity implements Persistable<Integer> {
+public abstract class AbstractBaseEntity implements Persistable<Integer>{
     public static final int START_SEQ = 100000;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -8,5 +8,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "station")
 public class Station extends AbstractNamedEntity {
+    public Station() {
+    }
 
+    public Station(String name) {
+        super();
+        setName(name);
+    }
 }
