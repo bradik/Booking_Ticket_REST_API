@@ -17,23 +17,23 @@ import javax.validation.constraints.NotNull;
 public class Ticket extends AbstractBaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "route_id", nullable = false)
+    @JoinColumn(name = "ROUTE_ID", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
     private Route route;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
+    @Column(name = "TYPE")
     private TicketType type;
 
-    @Column(name = "set_number")
+    @Column(name = "SET_NUMBER")
     private Integer setNumber;
 
-    @Column(name = "price")
+    @Column(name = "PRICE")
     private Long price;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "state")
+    @Column(name = "STATE")
     private TicketState state;
 
     public Route getRoute() {

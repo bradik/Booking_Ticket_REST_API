@@ -19,6 +19,7 @@ public class Route extends AbstractBaseEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, optional=true)
+    @JoinColumn(name="TRAIN_ID")
     private Train train;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
