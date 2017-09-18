@@ -27,23 +27,42 @@ public class RouteRestControlerTest {
 
     @Test
     public void getRouteFilterTest() throws Exception {
+        String actual;
+        final String expected =
+                "{\"id\":1,\"train\":{\"id\":2,\"name\":\"С-Петер-Гл — Москва Окт\",\"trainNumber\":\"029А\","+
+                "\"new\":false},\"fromStation\":{\"id\":3,\"name\":\"St.Peterburg\",\"new\":false},"+
+                "\"toStation\":{\"id\":1,\"name\":\"Москва Окт\",\"new\":false},\"departureDate\":1505638800000,"+
+                "\"arrivalDate\":1505660400000,\"new\":false}";
 
-        String actual =
+
+        actual =
+
+                mockMvc.perform(get(REST_URL + "/filter")
+                        .param("fromStationId", "3"))
+                        .andDo(print())
+                        .andExpect(status().isOk())
+                        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                        .andReturn().getResponse().getContentAsString();
+
+
+
+        Assert.assertThat(actual, StringContains.containsString(expected));
+
+        actual =
 
         mockMvc.perform(get(REST_URL+"/filter")
-        .param("fromStationId","3"))
+                .param("fromStationId","3")
+                .param("toStationId","1")
+                .param("departureDate","2017-09-17 10:30:00"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andReturn().getResponse().getContentAsString();
 
-        String expected =
-                "{\"id\":1,\"train\":{\"id\":2,\"name\":\"С-Петер-Гл — Москва Окт\",\"trainNumber\":\"029А\","+
-                        "\"new\":false},\"fromStation\":{\"id\":3,\"name\":\"St.Peterburg\",\"new\":false},"+
-                        "\"toStation\":{\"id\":1,\"name\":\"Москва Окт\",\"new\":false},\"departureDate\":1505660400000,"+
-                        "\"arrivalDate\":1505638800000,\"new\":false}";
+
 
         Assert.assertThat(actual, StringContains.containsString(expected));
+
     }
 
 }
