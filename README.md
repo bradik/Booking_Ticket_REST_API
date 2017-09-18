@@ -11,7 +11,6 @@ Base on:
 * Spring JPA
 * h2
 
-To test this, use the url:
-http://localhost:8080/rest/routes/filter?fromStationId=3&toStationId=1&departureDate=2017-09-17 00:00:00
+To test this, use the url:`http://localhost:8080/rest/routes/filter?fromStationId=3&toStationId=1&departureDate=2017-09-17 00:00:00`
 
 or use test class RouteRestControlerTest
